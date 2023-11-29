@@ -1,0 +1,60 @@
+#:import utils kivy.utils
+<label>
+    font_name: './src/menlo.ttf'
+    background_normal: ''
+    background_color: utils.get_color_from_hex('#181818')
+<TextInput>
+    font_name: './src/menlo.ttf'
+    font_size: 20
+    background_normal: ''
+    background_color: utils.get_color_from_hex('#181818')
+<MyLayout>
+    
+    url:url
+        
+    FloatLayout:
+        size: root.width, root.height
+
+        Image:
+
+            source: 'src/xfetch.png'
+            allow_stretch: False
+            keep_ratio: True
+            size_hint: None, None
+            size: root.width, 100
+            pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+
+        GridLayout:
+            cols:1
+            size_hint: 0.8, None
+            size: root.width, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            padding:2
+            spacing:2
+
+            GridLayout:
+                cols:4
+
+                Label:
+                    size_hint: 0.15, 20
+                    text: "URL: "
+                TextInput:
+                    size_hint: 0.75, 20
+                    id:url
+                    multiline:False
+                Spinner:
+                    id:spinner
+                    size_hint: 0.3, 20
+                    text: "Video"
+                    values: ["Video", "Mp3"]     
+            
+        GridLayout:
+            cols:1
+            size_hint: 0.35, None
+            size: root.width, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+
+            Button:
+                text: "Download"
+                font_size: (20)
+                on_press: root.press()
